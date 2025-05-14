@@ -72,9 +72,8 @@ export default defineConfig({
             },
             input: {
                 main: resolve(__dirname, 'index.html'),
-                dashboard: resolve(__dirname, 'dashboard.html')
-                // dashboard: resolve(root, 'pages/dashboard/', 'index.html'),
-                // home: path.resolve(root, 'pages/home/', 'index.html'), 
+                //dashboard: resolve(__dirname, 'dashboard.html')
+                 
             },
 
         }

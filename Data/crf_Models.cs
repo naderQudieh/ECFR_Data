@@ -35,7 +35,8 @@ public class CRF_TitleMain
     public string? Title { get; set; }
     public int no_of_paragraphs { get; set; } = 0;
     public int no_of_words { get; set; } = 0;
-    public int no_of_parts { get; set; } = 0;
+    public int no_of_parts { get; set; } = 0; 
+    public int no_of_sections { get; set; } = 0;
 }
 public class CRF_Part
 {

@@ -1,8 +1,12 @@
 
+update CRF_Titles_main 
+set no_of_sections = (
+select count(*) from [dbo].[CRF_Sections] SS where SS.[Title] ='Title'+ Trim(CAST(CRF_Titles_main.Node AS VARCHAR(10))) 
+)
 
 update CRF_Titles_main 
-set no_of_words = (
-select count(*) from [dbo].[CRF_SectionParagraphs] SS where SS.[Title] ='Title'+ Trim(CAST(CRF_Titles_main.Node AS VARCHAR(10))) 
+set no_of_parts = (
+select count(*) from [dbo].CRF_Parts SS where SS.[Title] ='Title'+ Trim(CAST(CRF_Titles_main.Node AS VARCHAR(10))) 
 )
  
 

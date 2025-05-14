@@ -89,23 +89,31 @@ export default function TitlesSummaryApp() {
         {
             name: 'Node Ref',
             selector: row => row.node, sortable: true,
-            width: "150px"
+            width: "90px"
         },
         {
             name: 'Title',
             selector: row => row.title,
+            width: "500px"
         },
         {
-            name: 'Section - Paragraphs',
-            selector: row => row.no_of_paragraphs
+            name: 'Total Sections',
+            selector: row => row.no_of_sections 
+            
         }
         ,
         {
-            name: 'No. of Parts',
+            name: 'Total Paragraphs',
+            selector: row => row.no_of_paragraphs 
+             
+        }
+        ,
+        {
+            name: 'Total Parts',
             selector: row => row.no_of_parts
         },
         {
-            name: 'No of Words',
+            name: 'Total Words',
             selector: row => row.no_of_words
         }
     ];

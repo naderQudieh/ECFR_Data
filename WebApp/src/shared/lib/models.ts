@@ -21,6 +21,7 @@ export interface CRFTitleMain {
     no_of_paragraphs: number
     no_of_parts: number
     no_of_words: number
+    no_of_sections: number
 }
 export interface CRFParagraph {
     title: string,

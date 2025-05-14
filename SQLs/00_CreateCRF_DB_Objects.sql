@@ -143,11 +143,12 @@ IF OBJECT_ID('[CRF_Sections]', 'U') IS NULL
 BEGIN
 
 CREATE TABLE [dbo].[CRF_Sections](
+	[Title] [nvarchar](50) NULL,
 	[Node] [nvarchar](50) NOT NULL,
 	[ParentNode] [nvarchar](50) NULL,
 	[SECTION_REF] [nvarchar](20) NULL,
-	[Head] [nvarchar](max) NULL,
-  ) ON [PRIMARY]
+	[Head] [nvarchar](max) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 END;
 GO
 

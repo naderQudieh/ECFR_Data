@@ -56,7 +56,7 @@ public class CRFService : ICRFService
     public async Task<List<CRF_TitleMain>> get_crf_mainTitles()
     {
         using var connection = _dbContext.CreateConnection();
-        var sql = $" SELECT TOP (1000) Node, Title, [no_of_paragraphs],[no_of_parts],no_of_words from CRF_Titles_main  ";
+        var sql = $" SELECT TOP (1000) Node, Title, [no_of_paragraphs],[no_of_parts],no_of_words, no_of_sections from CRF_Titles_main  ";
 
         var items = (await connection.QueryAsync<CRF_TitleMain>(sql));
         return items.ToList(); ;
