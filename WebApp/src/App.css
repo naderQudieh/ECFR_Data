@@ -1,5 +1,9 @@
 ﻿@import "tailwindcss";
 
+.rdt_TableRow:hover {
+    background-color: #dff1fd !important;
+}
+
 select {
     border: 1px solid #ccc0;
     font-size: 1.2rem;

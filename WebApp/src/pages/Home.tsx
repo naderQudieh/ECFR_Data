@@ -43,7 +43,9 @@ export default function HomeApp() {
     const columns = [
         {
             name: 'Title',
-            selector: row => row.title,
+            selector: row => {
+              return   "Title-"+row.title
+            }
         },
         {
             name: 'Type',
@@ -80,8 +82,8 @@ export default function HomeApp() {
 
         const loadTitles = async () => {
             try {
-
-                console.log("crfTitles");
+                setLoading(true);
+                setError(null); 
                 const _titles = await api_CRFs.getTitlesInfo();
                 if (_titles["titles"]) {
                     setCrfTitles(_titles["titles"]);
@@ -91,8 +93,7 @@ export default function HomeApp() {
                             label: item.name,
                         }
                     }
-                    );
-                    console.log(titlesList);
+                    ); 
                     setOptionsTitles(titlesList);
                 }
             } catch (err) {
@@ -115,12 +116,10 @@ export default function HomeApp() {
     const fetchTitlesSummary= async (value) => {
         try {
             setLoading(true);
-            setError(null);
-            console.log("selectedTitle=", value);
+            setError(null); 
             const _items = await api_CRFs.get_recent_Changes(Number(value));
             if (_items["content_versions"]) {
-                setCrfRecChanges(_items["content_versions"]);
-                console.log(crfRecChanges);
+                setCrfRecChanges(_items["content_versions"]); 
             } 
         } catch (err) {
             setError(err.message);
@@ -193,7 +192,7 @@ export default function HomeApp() {
                     paginationPerPage={55}
                     columns={columns}
                     data={filteredItems}
-                    highlightOnHover={true}
+                    
                     pointerOnHover={true}
                     pagination
                     responsive
