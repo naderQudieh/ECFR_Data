@@ -17,31 +17,26 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <Compile Remove="app-web\**" />
-	  <Compile Remove="ECFR_Data\**" />
 	  <Compile Remove="Scripts\**" />
 	  <Compile Remove="web-app\**" />
 	  <Compile Remove="WebApp\node_modules\**" />
 	  <Compile Remove="wwwroot\scripts\**" />
 	  <Content Remove="app-web\**" />
-	  <Content Remove="ECFR_Data\**" />
 	  <Content Remove="Scripts\**" />
 	  <Content Remove="web-app\**" />
 	  <Content Remove="WebApp\node_modules\**" />
 	  <Content Remove="wwwroot\scripts\**" />
 	  <EmbeddedResource Remove="app-web\**" />
-	  <EmbeddedResource Remove="ECFR_Data\**" />
 	  <EmbeddedResource Remove="Scripts\**" />
 	  <EmbeddedResource Remove="web-app\**" />
 	  <EmbeddedResource Remove="WebApp\node_modules\**" />
 	  <EmbeddedResource Remove="wwwroot\scripts\**" />
 	  <None Remove="app-web\**" />
-	  <None Remove="ECFR_Data\**" />
 	  <None Remove="Scripts\**" />
 	  <None Remove="web-app\**" />
 	  <None Remove="WebApp\node_modules\**" />
 	  <None Remove="wwwroot\scripts\**" />
 	  <TypeScriptCompile Remove="app-web\**" />
-	  <TypeScriptCompile Remove="ECFR_Data\**" />
 	  <TypeScriptCompile Remove="Scripts\**" />
 	  <TypeScriptCompile Remove="web-app\**" />
 	  <TypeScriptCompile Remove="WebApp\node_modules\**" />
