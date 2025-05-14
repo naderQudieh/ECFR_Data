@@ -23,4 +23,4 @@ DotNet/React setup
 - open the browser on port 4000/4001 (localhost:4000/index.html) / swagger home
 - open the browser on port 3000/3001 (localhost:3000/home.html) / swagger home
 -------------------------------
-https://github.com/naderQudieh/ECFR_Data/blob/main/WebApp/images/CaptureAPI.JPG
+<img src="https://github.com/naderQudieh/ECFR_Data/blob/main/WebApp/images/CaptureAPI.JPG" /> 
