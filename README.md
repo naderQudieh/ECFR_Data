@@ -13,7 +13,7 @@ This project is a web application developed by using .NET Core in the back-end a
 - Change the folder of xml files in the SQL scripts to point to your local folder.
 
 Notice: you can import xml files either by running script 02*.sql or from the API GET
-http://localhost:4000/api/Downlaod/bulkInsert-xml-files
+bulkInsert-xml-files
 
 The xml files are located in folder ECFR_Data in the root dir of the project.
 ------------------------------
