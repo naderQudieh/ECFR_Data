@@ -9,6 +9,9 @@ This project was developed by using .NET Core in the back-end and Vite/Recat for
 - Change the connection string in appsettings.json file to point to your SQL Server instance.
 - Change the folder of xml files in the SQL scripts to point to your local folder.
 
+Notice: you can import xml files either by running script 02*.sql or from the API GET
+http://localhost:4000/api/Downlaod/bulkInsert-xml-files
+
 The xml files are located in folder ECFR_Data in the root dir of the project.
 ------------------------------
 STEP - 1 Database setup
