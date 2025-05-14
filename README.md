@@ -39,3 +39,6 @@ API Swagger
 CRF-Home page - Dashboard
 <img width=800 src="https://github.com/naderQudieh/ECFR_Data/blob/main/WebApp/images/CaptureDashborad.JPG" /> 
 
+Titles Summary
+<img width=800 src="https://github.com/naderQudieh/ECFR_Data/blob/main/WebApp/images/CaptureTitles.JPG" /> 
+
