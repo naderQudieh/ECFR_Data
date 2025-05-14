@@ -1,6 +1,7 @@
 ﻿import { defineConfig, normalizePath } from 'vite'
 import react from '@vitejs/plugin-react'
 import { viteStaticCopy } from 'vite-plugin-static-copy';
+import tailwindcss from '@tailwindcss/vite'
 import path, { resolve } from 'path'
 normalizePath(path.resolve(__dirname, './')) 
 
@@ -13,6 +14,7 @@ export default defineConfig({
     base: "/",
     plugins: [
         react(),
+        tailwindcss(),
         viteStaticCopy({
             targets: [
                 {

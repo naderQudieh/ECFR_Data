@@ -66,7 +66,7 @@ export const FilterComponent = ({ filterText, onFilter, onClear }) => (
             value={filterText}
             onChange={onFilter}
         />
-        <ClearButton primary type="button" onClick={onClear}>
+        <ClearButton   type="button" onClick={onClear}>
             X
         </ClearButton> 
     </>

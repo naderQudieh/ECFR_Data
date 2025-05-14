@@ -4,7 +4,15 @@ export interface CRFTitle {
     head: string
     amendmentDate: string
 }
-
+export interface TitleInfo {
+    number: number
+    name: string
+    latest_amended_on: string
+    latest_issue_date: string
+    up_to_date_as_of: string
+    reserved: boolean
+    processing_in_progress?: boolean
+}
 export interface RecChanges {
     title: string
     type: string

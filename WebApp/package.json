@@ -10,12 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.1.6",
     "@tanstack/react-router": "^1.26.7",
+    "postcss": "^8.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "valibot": "^0.30.0"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.1.6",
     "@types/node": "^22.15.17",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",

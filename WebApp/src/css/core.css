@@ -1,4 +1,6 @@
-﻿body {
+﻿@import "tailwindcss";
+
+body {
     min-height: 800px !important;
     background-color: #f9f9f9cc !important;
     width: 100%;
