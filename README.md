@@ -4,7 +4,7 @@
 This project is a web application developed by using .NET Core in the back-end and Vite/Recat for the front-end
 - .NET Core API is in the root folder
 - React/Vite is in the WebApp folder
-- SQL Server is used as a database and should be named as CRF_XML_DATA - if you want to change the name of the database, you need to change the connection string in appsettings.json file
+- SQL Server is used as a database / db name = CRF_XML_DATA - if you want to change the name of the database, you need to change the connection string in appsettings.json file
   and change the database name in the SQL scripts
 - XML files are located in the ECFR_Data folder
 - SQL scripts are located in the SQL folder
