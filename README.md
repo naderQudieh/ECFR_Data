@@ -16,11 +16,11 @@ Notice: Section Paragraphs are more than 200K of rows
 -------------------------------
 DotNet/React setup
 -------------------------------
-1- open cmd/powershell window on the root folder
-2- run  dotnet run watch
-3- open cmd/powershell window on the root folder then cd to WebApp (front-end)
-4- run  npm run dev
-5- open the browser on port 4000/4001 (localhost:4000/index.html) / swagger home
-5- open the browser on port 3000/3001 (localhost:3000/home.html) / swagger home
+- open cmd/powershell window on the root folder
+- run  dotnet run watch
+- open cmd/powershell window on the root folder then cd to WebApp (front-end)
+- run  npm run dev
+- open the browser on port 4000/4001 (localhost:4000/index.html) / swagger home
+- open the browser on port 3000/3001 (localhost:3000/home.html) / swagger home
 -------------------------------
 Notice ;
