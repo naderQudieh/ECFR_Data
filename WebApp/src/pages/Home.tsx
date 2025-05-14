@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { api_CRFs } from "../shared/lib/apiCRFs";
 import type { Observable } from 'rxjs/internal/Observable';
-import type { RecChanges } from '../shared/lib/models';
+import type { RecChanges, TitleInfo } from '../shared/lib/models';
 import DataTable, { createTheme } from 'react-data-table-component';
 import { FilterComponent } from '../shared/common';
 import { customStyles, TextField, ClearButton } from '../shared/common';
-import styled from 'styled-components';
-import Button from '../shared/Button';
+import Dropdown  from '../shared/Dropdown';
+
+const PageTitleStyle = {
+    display: 'flex',  
+    padding: '1.5em',
+    alignItems: 'center' 
+}
+
  
 createTheme('solarized', {
     text: {
@@ -30,7 +36,8 @@ createTheme('solarized', {
         disabled: 'rgba(0,0,0,.12)',
     },
 }, 'light');
-  
+
+ 
 export default function HomeApp() {
 
     const columns = [
@@ -58,6 +65,9 @@ export default function HomeApp() {
             selector: row => row.issue_date
         }
     ];
+    const [selectedTitle, setSelectedTitle] = useState<string>('0')
+    const [optionsTitles, setOptionsTitles] = useState<any[]>([])
+    const [crfTitles, setCrfTitles] = useState<TitleInfo[]>([])
     const [selectedRows, setSelectedRows] = React.useState(false);
     const [toggledClearRows, setToggleClearRows] = React.useState(false);
     const [filterText, setFilterText] = React.useState('');
@@ -67,12 +77,23 @@ export default function HomeApp() {
     const [error, setError] = useState<string | null>(null)
 
     useEffect(() => {
-        const loadData = async () => {
+
+        const loadTitles = async () => {
             try {
-                const _items = await api_CRFs.get_recent_Changes(16);
-                if (_items["content_versions"]) {
-                    setCrfRecChanges(_items["content_versions"]);
-                    console.log(crfRecChanges);
+
+                console.log("crfTitles");
+                const _titles = await api_CRFs.getTitlesInfo();
+                if (_titles["titles"]) {
+                    setCrfTitles(_titles["titles"]);
+                    let titlesList = _titles["titles"].map((item) => {
+                        return {
+                            value: item.number,
+                            label: item.name,
+                        }
+                    }
+                    );
+                    console.log(titlesList);
+                    setOptionsTitles(titlesList);
                 }
             } catch (err) {
                 setError(err instanceof Error ? err.message : 'Failed to load data')
@@ -81,8 +102,44 @@ export default function HomeApp() {
             }
         }
 
-        loadData()
+        loadTitles()
     }, [])
+
+    useEffect(() => {
+        if (selectedTitle) {
+            fetchTitlesSummary(selectedTitle);
+        }
+    }, [selectedTitle]);
+    
+
+    const fetchTitlesSummary= async (value) => {
+        try {
+            setLoading(true);
+            setError(null);
+            console.log("selectedTitle=", value);
+            const _items = await api_CRFs.get_recent_Changes(Number(value));
+            if (_items["content_versions"]) {
+                setCrfRecChanges(_items["content_versions"]);
+                console.log(crfRecChanges);
+            } 
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+    const getTitleInfo = (number: number): TitleInfo | undefined => {
+        return  crfTitles[number]
+    }
+    const getLatestDateForTitle = (titleNumber: number): string => {
+        const title = this.getTitleInfo(titleNumber)
+
+        if (!title) {
+            throw new Error(`Title ${titleNumber} not found`)
+        }
+
+        return title.up_to_date_as_of
+    }
     const handleClick = (r: RecChanges) => {
         // clickedData(r);
     };
@@ -111,6 +168,10 @@ export default function HomeApp() {
         );
     }, [filterText, resetPaginationToggle]);
 
+    const handleSelectChange = (value: string) => {
+        console.log('Selected value:', value);
+        setSelectedTitle(value);
+    };
 
     if (loading) {
         return <div className="loader">Loading...</div>
@@ -121,7 +182,11 @@ export default function HomeApp() {
 
     return (
         <main>
-
+            <div style={PageTitleStyle } >
+                <h3 className="text-2xl font-bold mr-4">Select Title</h3>
+                <Dropdown options={optionsTitles} onChange={handleSelectChange} />
+            </div>
+           
             <div className="dashboard-container">
 
                 <DataTable className="mainTable"

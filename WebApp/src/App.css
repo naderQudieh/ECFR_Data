@@ -1,0 +1,28 @@
+﻿@import "tailwindcss";
+
+select {
+    font-size:  1.25rem ;
+    appearance: none;
+    border: 1px solid #ddd;
+    background-color: #efefefcc;
+    padding: 10px;
+    border-radius:  5px ;
+    transition: 0.4s;
+}
+
+select:hover,
+select:focus {
+    background-color: #ddd;
+}
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper::after {
+    content: "▼";
+    font-size: 1rem;
+    top: 16px!important;
+    right: 10px;
+    position: absolute;
+}
+ 

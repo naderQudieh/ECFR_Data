@@ -63,7 +63,36 @@ class Api_CRFs {
         if (!response.ok) {
             throw new Error('Failed to fetch posts')
         }
+        //console.log(response);
         return response.json()
+    }
+
+    async getTitleXML(
+        date: string,
+        title: string,
+        params?: {
+            subtitle?: string
+            chapter?: string
+            subchapter?: string
+            part?: string
+            subpart?: string
+            section?: string
+            appendix?: string
+        }
+    ): Promise<string> {
+        let _url = `https://www.ecfr.gov/api/versioner/v1/full/${date}/title-${title}.xml`;
+        const url = new URL(_url);
+        const _params = new URLSearchParams(params);
+        url.search = _params.toString();
+        const response = await fetch(_url, { 
+            headers: { Accept: 'application/xml' },
+        })
+        if (!response.ok) {
+            throw new Error('Failed to fetch posts')
+        }
+        //console.log(response);
+        return response.json()
+      
     }
 }
 var api_CRFs = new Api_CRFs();

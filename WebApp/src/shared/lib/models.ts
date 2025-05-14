@@ -1,3 +1,5 @@
+
+ 
 export interface CRFTitle {
     node: string
     title_Ref: number
@@ -13,6 +15,15 @@ export interface TitleInfo {
     reserved: boolean
     processing_in_progress?: boolean
 }
+//export interface TitleInfo {
+//    number: number
+//    name: string
+//    latestAmendedOn: string | null
+//    latestIssueDate: string | null
+//    upToDateAsOf: string | null
+//    reserved: boolean
+//    processingInProgress?: boolean
+//}
 export interface RecChanges {
     title: string
     type: string
