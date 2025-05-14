@@ -4,7 +4,7 @@ import type { Observable } from 'rxjs/internal/Observable';
 import type { RecChanges, TitleInfo } from '../shared/lib/models';
 import DataTable, { createTheme } from 'react-data-table-component';
 import { FilterComponent } from '../shared/common';
-import { customStyles, TextField, ClearButton } from '../shared/common';
+import { customStyles } from '../shared/common';
 import Dropdown  from '../shared/Dropdown';
 
 const PageTitleStyle = {

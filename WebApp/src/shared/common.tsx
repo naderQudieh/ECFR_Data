@@ -26,17 +26,16 @@ export const customStyles = {
     },
 };
 
-export const TextField = styled.input`
-	height: 32px;
-	width: 200px;
-	border-radius: 3px;
+export const TextField = styled.input` 
+	width: 200px; 
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
 	border: 1px solid #e5e5e5;
-	padding: 0 32px 0 16px;
-
+	padding: 0 10px!important;
+    
+    background-color: #f8fbff !important;
 	&:hover {
 		cursor: pointer;
 	}
@@ -47,7 +46,7 @@ export const ClearButton = styled(Button)`
 	border-bottom-left-radius: 0;
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
-	height: 34px;
+	height:42px;
 	width: 32px;
 	text-align: center;
 	display: flex;
