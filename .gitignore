@@ -5,3 +5,5 @@
 /.vs
 /.config
 /Properties/PublishProfiles
+/bin/Debug/net9.0
+/obj
