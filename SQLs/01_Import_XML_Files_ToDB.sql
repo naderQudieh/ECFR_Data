@@ -45,6 +45,7 @@ EXEC xp_cmdshell @cmd;
 DECLARE fileCursor CURSOR FOR 
 SELECT FileName FROM #TempFiles WHERE FileName IS NOT NULL;
 
+
 OPEN fileCursor;
 FETCH NEXT FROM fileCursor INTO @fileName;
 
