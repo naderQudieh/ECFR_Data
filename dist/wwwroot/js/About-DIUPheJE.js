@@ -1,0 +1,1 @@
+import{j as o}from"./index-DCP_mZRP.js";function n(){return o.jsxs("div",{children:[o.jsx("h1",{children:"About Us"}),o.jsx("p",{children:"Learn more about our company and mission."})]})}export{n as default};
