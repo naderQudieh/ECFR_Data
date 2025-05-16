@@ -61,7 +61,9 @@ try {
 
         builder.Services.AddAutoMapper(typeof(AutoMapperProfile).Assembly); 
         services.AddScoped<DbContext_Dapper>();
-        services.UseCustomLogging()
+		services.UseCustomLogging();
+
+        services.AddDbContext<DbContext_EF>()
         .AddServices() 
         .AddSwaggerConfiguration()
         .AddControllers();

@@ -8,9 +8,10 @@ namespace WebApi.DependencyInjection
     {
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
-            services.AddScoped<ICRFService, CRFService>();
-            services.AddSingleton<IErrorHandlingService, ErrorHandlingService>(); 
            
+            services.AddScoped<ICRFService, CRFService>();
+            services.AddSingleton<IErrorHandlingService, ErrorHandlingService>();
+            services.AddScoped<ICategoryService, CategoryService>();
             return services;
         }
     }

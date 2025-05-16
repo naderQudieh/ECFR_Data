@@ -75,12 +75,23 @@ tbody tr:hover:not(.boxfadeOut) {
 }
 
 
- 
+.table-container {
+    max-width: 1800px !important;
+    padding: 10px 20px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
 
 .mainTable {
-    min-height:500px !important;
+    max-width:1800px!important;
+    width: 100%;
+    min-height: 500px !important;
 }
- 
+.rdt_TableBody {
+    width: 100%;
+    
+}
 .error {
     color: #ff0000;
     padding: 1rem;

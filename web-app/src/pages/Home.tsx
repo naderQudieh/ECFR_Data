@@ -168,11 +168,11 @@ export default function HomeApp() {
         };
 
         return (
-            <div className="flex w-full">
+            <div className="flex w-full p-1">
                 <div className="flex w-2/3">
                     <h5 className="text-lg font-bold"> Recent Changes</h5> 
                 </div>
-                <div className="flex w-1/3">
+                <div className="flex w-1/3 place-content-end">
                     <FilterComponent onFilter={e => setFilterText(e.target.value)} onClear={handleClear} filterText={filterText} />
                 </div>
             </div>

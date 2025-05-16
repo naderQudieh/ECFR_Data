@@ -7,7 +7,7 @@
 		<TypeScriptOutDir>wwwroot/scripts</TypeScriptOutDir>
 	</PropertyGroup>
 	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
+		<TargetFramework>net9</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<RootNamespace>WebApi</RootNamespace>
@@ -19,25 +19,23 @@
 	  <Compile Remove="app-web\**" />
 	  <Compile Remove="Scripts\**" />
 	  <Compile Remove="WebApp\**" />
-	  <Compile Remove="wwwroot\scripts\**" />
+	  <Compile Remove="wwwroot\**" />
 	  <Content Remove="app-web\**" />
 	  <Content Remove="Scripts\**" />
 	  <Content Remove="WebApp\**" />
-	  <Content Remove="wwwroot\scripts\**" />
+	  <Content Remove="wwwroot\**" />
 	  <EmbeddedResource Remove="app-web\**" />
 	  <EmbeddedResource Remove="Scripts\**" />
 	  <EmbeddedResource Remove="WebApp\**" />
-	  <EmbeddedResource Remove="wwwroot\scripts\**" />
+	  <EmbeddedResource Remove="wwwroot\**" />
 	  <None Remove="app-web\**" />
 	  <None Remove="Scripts\**" />
 	  <None Remove="WebApp\**" />
-	  <None Remove="wwwroot\scripts\**" />
+	  <None Remove="wwwroot\**" />
 	  <TypeScriptCompile Remove="app-web\**" />
 	  <TypeScriptCompile Remove="Scripts\**" />
 	  <TypeScriptCompile Remove="WebApp\**" />
-	</ItemGroup>
-	<ItemGroup>
-		<Content Remove="wwwroot\dom_data.ts" />
+	  <TypeScriptCompile Remove="wwwroot\**" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Content Include="web-app\node_modules\%40ampproject\remapping\package.json" />
@@ -558,10 +556,9 @@
 		</PackageReference>
 	</ItemGroup>
 	<ItemGroup>
+	  <Folder Include="dist\wwwroot\" />
 	  <Folder Include="Shared\Settings\" />
 	  <Folder Include="web-app\node_modules\.vite-temp\" />
-	  <Folder Include="web-app\src\hooks\" />
-	  <Folder Include="wwwroot\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <None Include="web-app\node_modules\%40ampproject\remapping\dist\remapping.mjs" />

@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && rm -rf dist && vite build ",
+    "build": "tsc -b && vite build ",
+    "deploy": "shx cp -R dist/* ../dist/wwwroot",
+    "copy-dist": "cpx \"dist/**/*\" ../../wwwroot/publish",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -32,7 +34,9 @@
     "react-data-table-component": "^7.7.0",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^7.6.0",
+    "rimraf": "^6.0.1",
     "rxjs": "^7.8.2",
+    "shx": "^0.4.0",
     "styled-components": "^6.1.18",
     "tailwindcss": "^4.0.0",
     "typescript": "~5.8.3",
