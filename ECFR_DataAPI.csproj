@@ -79,7 +79,7 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Shared\Settings\" />
-	  <Folder Include="WebApp\assets\" />
+	  <Folder Include="WebApp\src\hooks\" />
 	  <Folder Include="wwwroot\" />
 	</ItemGroup>
 

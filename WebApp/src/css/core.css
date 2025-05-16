@@ -1,10 +1,5 @@
 ﻿
-
-body {
-    min-height: 800px !important;
-    background-color: #f9f9f9cc !important;
-    width: 100%;
-}
+@import "tailwindcss";
 
 .main-container {
     display: block;
@@ -74,24 +69,18 @@ tbody tr:hover:not(.boxfadeOut) {
 }
 
 .rdt_Table {
-    min-height: 500px;
-    max-width: 1500px !important
-}
-.rdt_Table {
-    min-height: 500px;
-    max-width:1500px!important
+   
+    height:500px !important;
+    width:100% !important
 }
 
-.rdt_TableBody {
-    max-width: 1800px !important;
-    min-height: 500px;
-}
+
  
 
 .mainTable {
-    min-height: 600px !important;
+    min-height:500px !important;
 }
-
+ 
 .error {
     color: #ff0000;
     padding: 1rem;
@@ -174,3 +163,16 @@ tbody tr:hover:not(.boxfadeOut) {
 .delete-button:hover {
     opacity: 0.8;
 }
+
+.rdt_TableRow {
+    min-height: 55px !important;
+    height: 55px !important;
+}
+
+ 
+.rdt_TableRow:hover {
+    background-color: #dff1fd !important;
+    
+}
+
+ 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { api_CRFs } from "../shared/lib/apiCRFs";
 import type { Observable } from 'rxjs/internal/Observable';
 import type { RecChanges, TitleInfo } from '../shared/lib/models';
@@ -6,6 +6,7 @@ import DataTable, { createTheme } from 'react-data-table-component';
 import { FilterComponent } from '../shared/common';
 import { customStyles } from '../shared/common';
 import Dropdown  from '../shared/Dropdown';
+import Dropdown2 from '../shared/Dropdown2';
 
 const PageTitleStyle = {
     display: 'flex',  
@@ -78,38 +79,37 @@ export default function HomeApp() {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
 
-    useEffect(() => {
 
-        const loadTitles = async () => {
-            try {
-                setLoading(true);
-                setError(null); 
-                const _titles = await api_CRFs.getTitlesInfo();
-                if (_titles["titles"]) {
-                    setCrfTitles(_titles["titles"]);
-                    let titlesList = _titles["titles"].map((item) => {
-                        return {
-                            value: item.number,
-                            label: item.name,
-                        }
+    const loadTitles = useMemo(async () => {
+        try {
+            setLoading(true);
+            setError(null);
+            const _titles = await api_CRFs.getTitlesInfo();
+            if (_titles["titles"]) {
+                setCrfTitles(_titles["titles"]);
+                let titlesList = _titles["titles"].map((item) => {
+                    return {
+                        value: item.number,
+                        label: item.name,
                     }
-                    ); 
-                    setOptionsTitles(titlesList);
                 }
-            } catch (err) {
-                setError(err instanceof Error ? err.message : 'Failed to load data')
-            } finally {
-                setLoading(false)
+                );
+                setOptionsTitles(titlesList);
             }
+        } catch (err) {
+            setError(err instanceof Error ? err.message : 'Failed to load data')
+        } finally {
+            setLoading(false)
         }
+    }, [ ]);
 
-        loadTitles()
-    }, [])
-
+    
     useEffect(() => {
         if (selectedTitle) {
             fetchTitlesSummary(selectedTitle);
         }
+       // const apiUrl = import.meta.env.VITE_API_URL;
+       // console.log('API URL:', apiUrl);
     }, [selectedTitle]);
     
 
@@ -127,12 +127,10 @@ export default function HomeApp() {
             setLoading(false);
         }
     };
-    const getTitleInfo = (number: number): TitleInfo | undefined => {
-        return  crfTitles[number]
-    }
+   
     const getLatestDateForTitle = (titleNumber: number): string => {
-        const title = this.getTitleInfo(titleNumber)
-
+        const title = crfTitles[titleNumber];
+        console.log(titleNumber);
         if (!title) {
             throw new Error(`Title ${titleNumber} not found`)
         }
@@ -140,7 +138,21 @@ export default function HomeApp() {
         return title.up_to_date_as_of
     }
     const handleClick = (r: RecChanges) => {
+        console.log(selectedTitle);
         // clickedData(r);
+    };
+
+    const handleDownLoadXML = async  (e: any) => {
+        e.preventDefault();
+        e.stopPropagation(); 
+        let date = getLatestDateForTitle(Number(selectedTitle));
+        let title = selectedTitle;
+        let params = {
+           
+        }
+        console.log(date, title);
+       const _items = await api_CRFs.getTitleXML(date, selectedTitle, params);
+        console.log(_items);
     };
     const filteredItems = crfRecChanges.filter(
         item => item.title && item.title.toLowerCase().includes(filterText.toLowerCase()),
@@ -158,7 +170,7 @@ export default function HomeApp() {
         return (
             <div className="flex w-full">
                 <div className="flex w-2/3">
-                    <h5 className="text-lg font-bold"> Recent Changes</h5>
+                    <h5 className="text-lg font-bold"> Recent Changes</h5> 
                 </div>
                 <div className="flex w-1/3">
                     <FilterComponent onFilter={e => setFilterText(e.target.value)} onClear={handleClear} filterText={filterText} />
@@ -180,19 +192,20 @@ export default function HomeApp() {
     }
 
     return (
-        <main>
+        <div>
             <div style={PageTitleStyle } >
+
                 <h3 className="text-2xl font-bold mr-4">Select Title</h3>
-                <Dropdown options={optionsTitles} onChange={handleSelectChange} />
+                <Dropdown2 options={optionsTitles} selectedValue={selectedTitle } onChange={handleSelectChange} />
+                <button className="btn btn-primary ml-2" onClick={handleDownLoadXML}>Download xml</button>
             </div>
            
             <div className="dashboard-container">
 
                 <DataTable className="mainTable"
-                    paginationPerPage={55}
+                    paginationPerPage={30}
                     columns={columns}
-                    data={filteredItems}
-                    
+                    data={filteredItems} 
                     pointerOnHover={true}
                     pagination
                     responsive
@@ -204,12 +217,10 @@ export default function HomeApp() {
                     selectableRowsHighlight={true}
                     customStyles={customStyles}
                     fixedHeader
-                    fixedHeaderScrollHeight="300px"
-
-
+                    fixedHeaderScrollHeight="300px" 
                 />
 
             </div>
-        </main>
+        </div>
     )
 }

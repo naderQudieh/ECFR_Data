@@ -13,6 +13,7 @@ export interface TitleInfo {
     latest_issue_date: string
     up_to_date_as_of: string
     reserved: boolean
+    result_count: number
     processing_in_progress?: boolean
 }
 //export interface TitleInfo {

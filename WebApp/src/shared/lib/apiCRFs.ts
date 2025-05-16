@@ -47,9 +47,7 @@ class Api_CRFs {
         if (title == 0) {
             title = 16;
         }
-        let _url = `https://www.ecfr.gov/api/versioner/v1/versions/title-${title}.json`;
-       // console.log(_url2);
-        let _url2 = "https://www.ecfr.gov/api/versioner/v1/versions/title-16.json";
+        let _url = `https://www.ecfr.gov/api/versioner/v1/versions/title-${title}.json`; 
         const response = await fetch(_url)
         if (!response.ok) {
             throw new Error('Failed to fetch posts')
@@ -57,7 +55,7 @@ class Api_CRFs {
         return response.json()
     }
 
-    async getTitlesInfo(): Promise<TitleInfo[]> {
+    getTitlesInfo = async (): Promise<TitleInfo[]> => {
         let _url = "https://www.ecfr.gov/api/versioner/v1/titles.json";
         const response = await fetch(_url)
         if (!response.ok) {
@@ -66,8 +64,7 @@ class Api_CRFs {
         //console.log(response);
         return response.json()
     }
-
-    async getTitleXML(
+    getTitleXML = async (
         date: string,
         title: string,
         params?: {
@@ -79,18 +76,19 @@ class Api_CRFs {
             section?: string
             appendix?: string
         }
-    ): Promise<string> {
+
+    ): Promise<string> => { 
         let _url = `https://www.ecfr.gov/api/versioner/v1/full/${date}/title-${title}.xml`;
         const url = new URL(_url);
         const _params = new URLSearchParams(params);
         url.search = _params.toString();
         const response = await fetch(_url, { 
-            headers: { Accept: 'application/xml' },
+            headers: { Accept: 'application/text' },
         })
         if (!response.ok) {
             throw new Error('Failed to fetch posts')
         }
-        //console.log(response);
+        console.log(response);
         return response.json()
       
     }

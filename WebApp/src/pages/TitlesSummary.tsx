@@ -31,7 +31,7 @@ createTheme('solarized', {
     },
 }, 'light');
   
-export default function TitlesSummaryApp() {
+export default function TitlesSummary() {
 
     const columns = [
 
